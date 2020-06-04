@@ -15,26 +15,27 @@
 
 | 路径 | 方法 | get参数 | post参数 | 是否需要登陆 | 备注 |
 
-/register get 注册页面
-/register post username.password  注册请求
-/login get  登陆页面
-/login post username.password 登陆请求
-/logout get 退出请求
+#### /register get 注册页面
+#### /register post username.password  注册请求
+#### /login get  登陆页面
+#### /login post username.password 登陆请求
+#### /logout get 退出请求
 
-manager/home
-manager/student
-manager/teacher
-manager/notice
-manager/user
-manager/repassword
 
-student/home
-student/score
-student/repassword
+#### manager/hom
+#### manager/studen
+#### manager/teache
+#### manager/notic
+#### manager/use
+#### manager/repassword
 
-teacher/home
-teacher/score
-student/repassword
+#### student/home
+#### student/score
+#### student/repassword
+
+#### teacher/home
+#### teacher/score
+#### student/repassword
 
 ## 使用
 npm install 下载所有依赖项
