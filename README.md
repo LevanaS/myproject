@@ -1,8 +1,11 @@
 ## 1.文件结构
 .
 ├── models 数据库文件
+
 ├── node_modules 依赖项
+
 ├── public 开放出来的公共文件 js/css/images文件 
+
 ├── views 前端页面 静态页面资源
 ├── app.js 启动入口文件 
 ├── package-lock.json npm产生的包说明文件（自动产生）
