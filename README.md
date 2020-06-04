@@ -5,10 +5,10 @@
 #### ├── public 开放出来的公共文件 js/css/images文件 
 #### ├── views 前端页面 静态页面资源
 #### ├── app.js 启动入口文件 
-├── package-lock.json npm产生的包说明文件（自动产生）
-├── package.json 配置信息
-├── router.js 路由设计文件
-└── README.md 项目说明文件
+#### ├── package-lock.json npm产生的包说明文件（自动产生）
+#### ├── package.json 配置信息
+#### ├── router.js 路由设计文件
+#### └── README.md 项目说明文件
 ## 2.模板页
 
 ## 3.路由设计
