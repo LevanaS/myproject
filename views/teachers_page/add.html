@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>学生成绩管理系统</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,14 @@
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">学生成绩管理系统
         </a>
-        
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              欢迎用户：{{ user }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/login">登出</a></li>
+            </ul>
+            </div>
     </nav>
 
     <div class="container-fluid">
@@ -56,18 +63,24 @@
             </nav>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <h2 style="margin-bottom: 50px;">录入课程成绩</h2>
+
                 <form action="/teacher/student/add" method="post">
                     <div class="form-group">
                         <label for="">学号</label>
                         <input type="text" class="form-control" placeholder="学号" name="idname">
                     </div>
                     <div class="form-group">
-                        <label for="">年级</label>
-                        <input type="text" class="form-control" placeholder="年级" name="class">
+                        <label for="">姓名</label>
+                        <input type="text" class="form-control" placeholder="姓名" name="stuname">
                     </div>
                     <div class="form-group">
-                        <label for="">学科</label>
-                        <input type="text" class="form-control" placeholder="学科" name="subject">
+                        <label for="">教学班次</label>
+                        <input type="text" class="form-control" placeholder="教学班次" name="class">
+                    </div>
+                    <div class="form-group">
+                        <label for="">课程名</label>
+                        <input type="text" class="form-control" placeholder="课程名" name="subject">
                     </div>
                     <div class="form-group">
                         <label for="">成绩</label>

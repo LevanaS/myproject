@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>学生成绩管理系统</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,13 +17,46 @@
 
     <style>
     </style>
+        <script type="text/javascript">
+            function validationNumber(e, num) {
+                var regu = /^[0-9]+\.?[0-9]*$/;
+                if (e.value != "") {
+                    if (!regu.test(e.value)) {
+                        alert("该项只能输入数字,请重新输入!");
+                        e.value = e.value.substring(0, e.value.length - 1);
+                        e.focus();
+                    } else {
+                        if (num == 0) {
+                            if (e.value.indexOf('.') > -1) {
+                                e.value = e.value.substring(0, e.value.length - 1);
+                                e.focus();
+                            }
+                        }
+                        if (e.value.indexOf('.') > -1) {
+                            if (e.value.split('.')[1].length > num) {
+                                e.value = e.value.substring(0, e.value.length - 1);
+                                e.focus();
+                            }
+                        }
+                    }
+                }
+            }
+    
+    </script>
 </head>
 
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">学生成绩管理系统
         </a>
-        
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              欢迎用户：{{ user }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="/login">登出</a></li>
+            </ul>
+            </div>
     </nav>
 
     <div class="container-fluid">
@@ -40,7 +73,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/teacher/score">
                                     <span data-feather="file"></span>
-                                    学生成绩
+                                    课程成绩
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -54,24 +87,30 @@
             </nav>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <h2 style="margin-bottom: 50px;">修改学生成绩</h2>
+
                     <form action="/teacher/student/edit" method="post">
                         <input type="hidden" name="id" value="{{ grade._id }}">
                         <div class="form-group">
                             <label for="">学号</label>
-                            <input type="text" class="form-control"  name="idname" value="{{ grade.idname }}">
+                            <input type="text" class="form-control"  name="idname" value="{{ grade.idname }}" onkeyup="validationNumber(this,0)">
                         </div>
                         <div class="form-group">
-                            <label for="">年级</label>
+                            <label for="">姓名</label>
+                            <input type="text" class="form-control"  name="stuname" value="{{ grade.stuname }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">教学班次</label>
                             <input type="text" class="form-control"  name="class" value="{{ grade.class }}">
                         </div>
                         <div class="form-group">
-                            <label for="">学科</label>
+                            <label for="">课程名</label>
                             <input type="text" class="form-control"  name="subject"
                                 value="{{ grade.subject }}">
                         </div>
                         <div class="form-group">
                             <label for="">成绩</label>
-                            <input type="text" class="form-control"  name="score" value="{{ grade.score }}">
+                            <input type="text" class="form-control"  name="score" value="{{ grade.score }}" onkeyup="validationNumber(this,0)">
                         </div>
                         <div class="form-group">
                             <label for="">合格</label>

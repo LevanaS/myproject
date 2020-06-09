@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>学生成绩管理系统</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -89,8 +89,9 @@
                         <thead>
                             <tr>
                                 <th>学号</th>
-                                <th>年级</th>
-                                <th>学科</th>
+                                <th>姓名</th>
+                                <th>教学班次</th>
+                                <th>课程名</th>
                                 <th>成绩</th>
                                 <th>是否合格</th>
                                 <th>管理</th>
@@ -101,6 +102,7 @@
                             <tr>
                                 
                                 <td>{{ $value.id }}</td>
+                                <td>{{ $value.stuname }}</td>
                                 <td>{{ $value.class }}</td>
                                 <td>{{ $value.subject }}</td>
                                 <td>{{ $value.score }}</td>

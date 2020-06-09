@@ -467,13 +467,20 @@ router.get('/student/score',function(req,res){
     if(err){
     return res.status(500).send('Server error')
       }
-      res.render('./students_page/score.html',{grade:grade})  
+      res.render('./students_page/score.html',{
+        grade:grade,
+        user:req.session.student.studentusername
+
+      })  
   })
 })
 
 // get学生修改密码界面（/student/repassword）
 router.get('/student/repassword',function(req,res){
-  res.render('students_page/repassword.html')
+  res.render('students_page/repassword.html',{
+    user:req.session.student.studentusername
+
+  })
 })
 
 // post学生修改密码界面（/student/repassword）
@@ -522,13 +529,18 @@ router.get('/teacher/score',function(req,res){
       console.log(err)
     return res.status(500).send('Server error')
       }
-      res.render('teachers_page/score.html',{grade:grade})  
+      res.render('teachers_page/score.html',{
+        grade:grade,
+        user:req.session.student.studentusername
+      })  
   })
 })
 
 // get教师修改密码界面（/teacher/repassword）
 router.get('/teacher/repassword',function(req,res){
-  res.render('teachers_page/repassword.html')
+  res.render('teachers_page/repassword.html',{
+    user:req.session.student.studentusername
+  })
 })
 
 // post教师修改密码界面（/teacher/repassword）
@@ -556,7 +568,20 @@ router.post('/teacher/repassword',function(req,res){
 //  教师增删改查
 // get增加
 router.get('/teacher/student/add',function(req,res){
-  res.render('teachers_page/add.html')
+  res.render('teachers_page/add.html',{
+    user:req.session.student.studentusername
+  })
+})
+
+// 删除学生成绩数据(/teacher/student/delete) 已完成
+router.get('/teacher/student/delete',function(req,res){
+  var id = req.query.id.replace(/"/g,'')
+  Grade.findByIdAndRemove(id,function(err){
+      if(err){
+          return res.status(500).send('Server error.')
+      }
+      res.redirect('/teacher/score')
+  })
 })
 
 // post添加
@@ -577,7 +602,9 @@ router.get('/teacher/student/edit',function(req,res){
       return res.status(500).send('Server error.')
     }
     res.render('teachers_page/edit.html', {
-      grade:grade
+      grade:grade,
+      user:req.session.student.studentusername
+
     })
   })
 })
@@ -600,7 +627,10 @@ router.get('/teacher/student/find',function(req,res){
     if (err) {
       return res.status(500).send('Server error.')
     }
-    res.render('teachers_page/find.html',{grade:ret}) 
+    res.render('teachers_page/find.html',{
+      grade:ret,
+      user:req.session.student.studentusername
+    }) 
   })
 })
 

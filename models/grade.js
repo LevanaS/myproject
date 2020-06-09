@@ -8,6 +8,10 @@ var gradeSchema = new Schema({
         type:String,
         required:true
     },
+    stuname:{
+        type:String,
+        required:true
+    },
     class:{
         type:String,
         required:true
@@ -23,7 +27,9 @@ var gradeSchema = new Schema({
     pass:{
         type:String,
         required:true
-    }
+    },
+
+
 })
 
 module.exports = mongoose.model('Grade',gradeSchema)
